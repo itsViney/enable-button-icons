@@ -62,19 +62,291 @@ function enable_button_icons_block_styles() {
 add_action( 'init', 'enable_button_icons_block_styles' );
 
 /**
+ * Allowed SVG elements and attributes for custom icons.
+ *
+ * @return array
+ */
+function enable_button_icons_get_allowed_svg_elements() {
+        return array(
+                'svg'            => array(
+                        'class'                 => true,
+                        'aria-hidden'           => true,
+                        'aria-labelledby'       => true,
+                        'role'                  => true,
+                        'focusable'             => true,
+                        'xmlns'                 => true,
+                        'xmlns:xlink'           => true,
+                        'version'               => true,
+                        'viewbox'               => true,
+                        'preserveaspectratio'   => true,
+                        'width'                 => true,
+                        'height'                => true,
+                        'fill'                  => true,
+                        'stroke'                => true,
+                        'stroke-width'          => true,
+                        'stroke-linecap'        => true,
+                        'stroke-linejoin'       => true,
+                        'stroke-miterlimit'     => true,
+                        'style'                 => true,
+                        'id'                    => true,
+                ),
+                'g'              => array(
+                        'class'             => true,
+                        'fill'              => true,
+                        'fill-rule'         => true,
+                        'stroke'            => true,
+                        'stroke-width'      => true,
+                        'stroke-linecap'    => true,
+                        'stroke-linejoin'   => true,
+                        'stroke-miterlimit' => true,
+                        'transform'         => true,
+                        'opacity'           => true,
+                        'style'             => true,
+                        'id'                => true,
+                ),
+                'path'           => array(
+                        'class'             => true,
+                        'd'                 => true,
+                        'fill'              => true,
+                        'fill-rule'         => true,
+                        'stroke'            => true,
+                        'stroke-width'      => true,
+                        'stroke-linecap'    => true,
+                        'stroke-linejoin'   => true,
+                        'stroke-miterlimit' => true,
+                        'transform'         => true,
+                        'opacity'           => true,
+                        'style'             => true,
+                        'id'                => true,
+                ),
+                'rect'           => array(
+                        'class'             => true,
+                        'x'                 => true,
+                        'y'                 => true,
+                        'width'             => true,
+                        'height'            => true,
+                        'rx'                => true,
+                        'ry'                => true,
+                        'fill'              => true,
+                        'fill-rule'         => true,
+                        'stroke'            => true,
+                        'stroke-width'      => true,
+                        'stroke-linecap'    => true,
+                        'stroke-linejoin'   => true,
+                        'stroke-miterlimit' => true,
+                        'transform'         => true,
+                        'opacity'           => true,
+                        'style'             => true,
+                        'id'                => true,
+                ),
+                'circle'         => array(
+                        'class'             => true,
+                        'cx'                => true,
+                        'cy'                => true,
+                        'r'                 => true,
+                        'fill'              => true,
+                        'fill-rule'         => true,
+                        'stroke'            => true,
+                        'stroke-width'      => true,
+                        'stroke-linecap'    => true,
+                        'stroke-linejoin'   => true,
+                        'stroke-miterlimit' => true,
+                        'transform'         => true,
+                        'opacity'           => true,
+                        'style'             => true,
+                        'id'                => true,
+                ),
+                'ellipse'        => array(
+                        'class'             => true,
+                        'cx'                => true,
+                        'cy'                => true,
+                        'rx'                => true,
+                        'ry'                => true,
+                        'fill'              => true,
+                        'fill-rule'         => true,
+                        'stroke'            => true,
+                        'stroke-width'      => true,
+                        'stroke-linecap'    => true,
+                        'stroke-linejoin'   => true,
+                        'stroke-miterlimit' => true,
+                        'transform'         => true,
+                        'opacity'           => true,
+                        'style'             => true,
+                        'id'                => true,
+                ),
+                'line'           => array(
+                        'class'         => true,
+                        'x1'            => true,
+                        'y1'            => true,
+                        'x2'            => true,
+                        'y2'            => true,
+                        'stroke'        => true,
+                        'stroke-width'  => true,
+                        'stroke-linecap'=> true,
+                        'stroke-linejoin'=> true,
+                        'transform'     => true,
+                        'opacity'       => true,
+                        'style'         => true,
+                        'id'            => true,
+                ),
+                'polyline'       => array(
+                        'class'         => true,
+                        'fill'          => true,
+                        'fill-rule'     => true,
+                        'points'        => true,
+                        'stroke'        => true,
+                        'stroke-width'  => true,
+                        'stroke-linecap'=> true,
+                        'stroke-linejoin'=> true,
+                        'stroke-miterlimit' => true,
+                        'transform'     => true,
+                        'opacity'       => true,
+                        'style'         => true,
+                        'id'            => true,
+                ),
+                'polygon'        => array(
+                        'class'         => true,
+                        'fill'          => true,
+                        'fill-rule'     => true,
+                        'points'        => true,
+                        'stroke'        => true,
+                        'stroke-width'  => true,
+                        'stroke-linecap'=> true,
+                        'stroke-linejoin'=> true,
+                        'stroke-miterlimit' => true,
+                        'transform'     => true,
+                        'opacity'       => true,
+                        'style'         => true,
+                        'id'            => true,
+                ),
+                'title'          => array(),
+                'desc'           => array(),
+                'defs'           => array(),
+                'clippath'       => array(
+                        'class' => true,
+                        'id'    => true,
+                        'transform' => true,
+                        'clippathunits' => true,
+                ),
+                'mask'           => array(
+                        'class'             => true,
+                        'id'                => true,
+                        'maskunits'         => true,
+                        'maskcontentunits'  => true,
+                        'x'                 => true,
+                        'y'                 => true,
+                        'width'             => true,
+                        'height'            => true,
+                        'style'             => true,
+                        'transform'         => true,
+                ),
+                'lineargradient' => array(
+                        'class'             => true,
+                        'id'                => true,
+                        'x1'                => true,
+                        'y1'                => true,
+                        'x2'                => true,
+                        'y2'                => true,
+                        'gradientunits'     => true,
+                        'gradienttransform' => true,
+                        'spreadmethod'      => true,
+                ),
+                'radialgradient' => array(
+                        'class'             => true,
+                        'id'                => true,
+                        'cx'                => true,
+                        'cy'                => true,
+                        'r'                 => true,
+                        'fx'                => true,
+                        'fy'                => true,
+                        'gradientunits'     => true,
+                        'gradienttransform' => true,
+                ),
+                'stop'           => array(
+                        'class'       => true,
+                        'offset'      => true,
+                        'stop-color'  => true,
+                        'stop-opacity'=> true,
+                        'style'       => true,
+                ),
+                'pattern'        => array(
+                        'class'                 => true,
+                        'id'                    => true,
+                        'x'                     => true,
+                        'y'                     => true,
+                        'width'                 => true,
+                        'height'                => true,
+                        'patternunits'          => true,
+                        'patterncontentunits'   => true,
+                        'patterntransform'      => true,
+                        'viewbox'               => true,
+                        'preserveaspectratio'   => true,
+                ),
+                'use'            => array(
+                        'class'       => true,
+                        'href'        => true,
+                        'xlink:href'  => true,
+                        'x'           => true,
+                        'y'           => true,
+                        'width'       => true,
+                        'height'      => true,
+                        'transform'   => true,
+                        'style'       => true,
+                ),
+                'symbol'         => array(
+                        'class'               => true,
+                        'id'                  => true,
+                        'viewbox'             => true,
+                        'preserveaspectratio' => true,
+                        'style'               => true,
+                ),
+                'metadata'       => array(),
+        );
+}
+
+/**
+ * Sanitize custom SVG markup.
+ *
+ * @param string $svg The raw SVG markup provided by the user.
+ * @return string Sanitized SVG markup or an empty string if invalid.
+ */
+function enable_button_icons_prepare_custom_svg( $svg ) {
+        if ( empty( $svg ) || ! is_string( $svg ) ) {
+                return '';
+        }
+
+        $svg = trim( $svg );
+
+        if ( '' === $svg ) {
+                return '';
+        }
+
+        $sanitized_svg = wp_kses( $svg, enable_button_icons_get_allowed_svg_elements() );
+
+        if ( '' === trim( $sanitized_svg ) ) {
+                return '';
+        }
+
+        if ( false === stripos( $sanitized_svg, '<svg' ) ) {
+                return '';
+        }
+
+        return $sanitized_svg;
+}
+
+/**
  * Render icons on the frontend.
  */
 function enable_button_icons_render_block_button( $block_content, $block ) {
-	if ( ! isset( $block['attrs']['icon'] ) ) {
-		return $block_content;
-	}
+        $attributes = isset( $block['attrs'] ) ? $block['attrs'] : array();
+        $icon       = isset( $attributes['icon'] ) ? $attributes['icon'] : '';
+        $icon_source = isset( $attributes['iconSource'] ) ? $attributes['iconSource'] : 'library';
+        $custom_icon_svg = isset( $attributes['customIconSvg'] ) ? (string) $attributes['customIconSvg'] : '';
+        $positionLeft = isset( $attributes['iconPositionLeft'] ) ? $attributes['iconPositionLeft'] : false;
+        $justifySpaceBetween = isset( $attributes['justifySpaceBetween'] ) ? $attributes['justifySpaceBetween'] : false;
 
-	$icon                = $block['attrs']['icon'];
-	$positionLeft        = isset( $block['attrs']['iconPositionLeft'] ) ? $block['attrs']['iconPositionLeft'] : false;
-	$justifySpaceBetween = isset( $block['attrs']['justifySpaceBetween'] ) ? $block['attrs']['justifySpaceBetween'] : false;
-	
-	// All available icon SVGs.
-	$icons = array(
+        // All available icon SVGs.
+        $icons = array(
 		'arrow-left'            => "<svg viewBox='0 0 16 11' xmlns='http://www.w3.org/2000/svg'><polygon points='16 4.7 2.88198758 4.7 6.55900621 1 5.56521739 0 0 5.5 5.56521739 11 6.55900621 10 2.88198758 6.3 16 6.3'></polygon></svg>",
 		'arrow-right'           => "<svg viewBox='0 0 16 11' xmlns='http://www.w3.org/2000/svg'><polygon points='0 4.7 13.1180124 4.7 9.44099379 1 10.4347826 0 16 5.5 10.4347826 11 9.44099379 10 13.1180124 6.3 0 6.3'></polygon></svg>",
 		'chevron-left'          => "<svg viewBox='0 0 10 18' xmlns='http://www.w3.org/2000/svg'><polygon points='8.18181818 0 10 1.5 3.03030303 9 10 16.5 8.18181818 18 0 9'></polygon></svg>",
@@ -98,25 +370,52 @@ function enable_button_icons_render_block_button( $block_content, $block ) {
 	);
 
 	// Make sure the selected icon is in the array, otherwise bail.
-	if ( ! array_key_exists( $icon, $icons ) ) {
-		return $block_content;
-	}
+        $icon_markup = '';
+        $icon_class  = '';
 
-	// Append the icon class to the block.
-	$p = new WP_HTML_Tag_Processor( $block_content );
-	if ( $p->next_tag() ) {
-		$p->add_class( 'has-icon__' . $icon );
-		if ( $justifySpaceBetween ) {
-			$p->add_class( 'has-justified-space-between' );
-		}
-	}
-	$block_content = $p->get_updated_html();
+        if ( 'custom' === $icon_source ) {
+                $icon_markup = enable_button_icons_prepare_custom_svg( $custom_icon_svg );
 
-	// Add the SVG icon either to the left of right of the button text.
-	$block_content = $positionLeft 
-		? preg_replace( '/(<a[^>]*>)(.*?)(<\/a>)/i', '$1<span class="wp-block-button__link-icon" aria-hidden="true">' . $icons[ $icon ] . '</span>$2$3', $block_content )
-		: preg_replace( '/(<a[^>]*>)(.*?)(<\/a>)/i', '$1$2<span class="wp-block-button__link-icon" aria-hidden="true">' . $icons[ $icon ] . '</span>$3', $block_content );
+                if ( empty( $icon_markup ) ) {
+                        return $block_content;
+                }
 
-	return $block_content;
+                $icon_class = 'custom';
+        } else {
+                if ( empty( $icon ) || ! array_key_exists( $icon, $icons ) ) {
+                        return $block_content;
+                }
+
+                $icon_markup = $icons[ $icon ];
+                $icon_class  = $icon;
+        }
+
+        // Append the icon class to the block.
+        $p = new WP_HTML_Tag_Processor( $block_content );
+        if ( $p->next_tag() ) {
+                $p->add_class( 'has-icon__' . $icon_class );
+                if ( $justifySpaceBetween ) {
+                        $p->add_class( 'has-justified-space-between' );
+                }
+        }
+        $block_content = $p->get_updated_html();
+
+        // Add the SVG icon either to the left of right of the button text.
+        $icon_wrapper = '<span class="wp-block-button__link-icon" aria-hidden="true">' . $icon_markup . '</span>';
+
+        $block_content = preg_replace_callback(
+                '/(<a[^>]*>)(.*?)(<\/a>)/is',
+                static function ( $matches ) use ( $icon_wrapper, $positionLeft ) {
+                        if ( $positionLeft ) {
+                                return $matches[1] . $icon_wrapper . $matches[2] . $matches[3];
+                        }
+
+                        return $matches[1] . $matches[2] . $icon_wrapper . $matches[3];
+                },
+                $block_content,
+                1
+        );
+
+        return $block_content;
 }
 add_filter( 'render_block_core/button', 'enable_button_icons_render_block_button', 10, 2 );

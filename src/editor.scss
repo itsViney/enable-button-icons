@@ -85,8 +85,19 @@ $wordpress: "data:image/svg+xml;utf8,<svg width='20' height='20' xmlns='http://w
                 width: 0.3em;
                 mask-image: url( $chevron-right-small);
                 -webkit-mask-image: url( $chevron-right-small );
-            } 
-        } 
+            }
+        }
+    }
+
+    &.has-icon__custom {
+        .wp-block-button__link {
+            &::after, &::before {
+                height: 1em;
+                width: 1em;
+                mask-image: var(--enable-button-icons-custom);
+                -webkit-mask-image: var(--enable-button-icons-custom);
+            }
+        }
     }
 
     &.has-icon__chevron-left {
@@ -264,6 +275,13 @@ $wordpress: "data:image/svg+xml;utf8,<svg width='20' height='20' xmlns='http://w
             } 
         } 
     }
+}
+
+.button-icon-picker__custom-svg {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
 }
 
 // Style "Icon Settings" panel.

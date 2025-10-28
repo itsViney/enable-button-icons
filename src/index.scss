@@ -42,6 +42,13 @@
         }
     }
 
+    &.has-icon__custom {
+        svg {
+            height: 1em;
+            width: 1em;
+        }
+    }
+
     &.has-icon__chevron-left,
     &.has-icon__chevron-right {
         svg {
